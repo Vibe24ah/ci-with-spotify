@@ -42,27 +42,22 @@ jobs:
     # This is just like typing commands in the Codespace terminal
 
 steps:
-  - run: uv pip install black # this command will run in the uv environment
+    - run: uv pip install black # this command will run in the uv environment
 
     # This step installs dependencies
     # TODO: Replace the run block, using `uv` to sync the environment
-  - name: Install dependencies
-    run: uv sync 
+    - name: Install dependencies
+      run: uv sync 
 
     # This step runs unit tests with pytest
     # TODO: Update the run block. Use: uv run -m pytest
     # we need -m so that our tests can find our notebook code
-  #- name: Test with pytest
-   # run: uv run -m pytest
+    - name: Test with pytest
+      run: uv run -m pytest
 
     # This step runs the linter against the codebase
     # TODO: Replace the run block to use our preferred linter
-    #name: Lint with Ruff
-    #run: 
-     # uv run ruff check .
-        # stop the build if there are Python syntax errors or undefined names
-        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
-        # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
-        flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+    - name: Lint with Ruff
+      run: uv run ruff check .
 
     # TODO: Add steps to run formatting steps and type checking
