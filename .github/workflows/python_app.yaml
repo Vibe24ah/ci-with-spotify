@@ -23,7 +23,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-
     # This step copies your repository code to the runner
     - uses: actions/checkout@v4
 
@@ -58,6 +57,8 @@ steps:
     # This step runs the linter against the codebase
     # TODO: Replace the run block to use our preferred linter
     - name: Lint with Ruff
-      run: uv run ruff check .
+      run: uvx ruff check .
 
     # TODO: Add steps to run formatting steps and type checking
+    - name: formatting 
+      run: uvx ty check .
